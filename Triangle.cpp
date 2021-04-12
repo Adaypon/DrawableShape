@@ -14,11 +14,11 @@ void Triangle::draw(std::ostream& s = std::cout) {
 	for (size_t i = 0; i < size(); ++i) {
 		s << _sym;
 		for (size_t j = 1; j < size(); ++j) {
-			if (i == _size-1) { // botton
+			if ((i > 0 && j == i) || (i == _size-1)) {
 				s << _sym;
 			}
-			else if (i > 0 && j == i) {
-				s << _sym;
+			else if (j < i) {
+				s << (isFilled() ? _sym : _symBG);
 			}
 			else {
 				s << _symBG;

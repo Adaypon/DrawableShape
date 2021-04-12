@@ -13,11 +13,11 @@ Rhombus::~Rhombus() {
 
 void Rhombus::draw(std::ostream& s = std::cout) {
 	size_t vertexIdx = _size / 2;
-	bool sizeIsOdd = _size % 2;
+	bool isSizeOdd = _size % 2;
 	size_t leftIdx, rightIdx;
 
 	
-	if (sizeIsOdd) {
+	if (isSizeOdd) {
 		leftIdx = vertexIdx;
 		rightIdx = vertexIdx;
 	}
@@ -32,6 +32,9 @@ void Rhombus::draw(std::ostream& s = std::cout) {
 				s << _sym;
 				continue;
 			}
+			else if (j >= leftIdx && j <= rightIdx) {
+				s << (isFilled() ? _sym : _symBG);
+			}
 			else {
 				s << _symBG;
 			}
@@ -39,7 +42,7 @@ void Rhombus::draw(std::ostream& s = std::cout) {
 		s << "\n";
 
 		if (i < vertexIdx) {
-			if (sizeIsOdd || (!sizeIsOdd && i != vertexIdx-1)) {
+			if (isSizeOdd || (!isSizeOdd && i != vertexIdx-1)) {
 				--leftIdx;
 				++rightIdx;
 			}

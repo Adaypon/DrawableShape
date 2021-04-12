@@ -21,6 +21,9 @@ void Circle::draw(std::ostream& s = std::cout) {
 			if (distanceToCentre > radius-0.5 && distanceToCentre < radius+0.5) { // approximation
 				s << _sym;
 			}
+			else if (distanceToCentre < radius) {
+				s << (isFilled() ? _sym : _symBG);
+			}
 			else {
 				s << _symBG;
 			}

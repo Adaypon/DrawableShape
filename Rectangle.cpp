@@ -17,7 +17,7 @@ void Rectangle::draw(std::ostream& s = std::cout) {
 				s << _sym;
 			}
 			else {
-				s << _symBG;
+				s << (isFilled() ? _sym : _symBG);
 			}
 		}
 		s << "\n";

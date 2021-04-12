@@ -13,18 +13,21 @@ enum class Type {
 
 class DrawableShape {
 public:
-	DrawableShape();
-	virtual ~DrawableShape();
+	DrawableShape() = default;
+	virtual ~DrawableShape() = 0;
 	
 	void setSymbol(char sym);
 	void setBackgroundSymbol(char sym);
 
 	Type getType() const;
 	
-	virtual void draw(std::ostream& s);
+	virtual void draw(std::ostream& s) = 0;
 	
 	unsigned int size() const;
 	void setSize(unsigned size);
+
+	void setFill(bool flag);
+	bool isFilled() const;
 
 	friend std::ostream& operator<<(std::ostream&, DrawableShape&);
 
@@ -33,4 +36,5 @@ protected:
 	unsigned int _size = 0;
 	char _sym = '*';
 	char _symBG = '-';
+	bool _filledFlag = false;
 };
